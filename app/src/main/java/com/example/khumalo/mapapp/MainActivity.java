@@ -19,6 +19,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -107,9 +110,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
            m_map = googleMap;
-           m_map.animateCamera(CameraUpdateFactory.newCameraPosition(CityCenter),20000,null);
+           m_map.animateCamera(CameraUpdateFactory.newCameraPosition(CityCenter), 20000, null);
            m_map.addMarker(Betram);
            m_map.addMarker(District);
            m_map.addMarker(South);
+
+        PolylineOptions trianglePolyOptions =  new PolylineOptions()
+                .add(new LatLng(-33.930366, 18.413767))
+                .add(new LatLng(-33.927544, 18.423731))
+                .add(new LatLng(-33.928738, 18.414925))
+                .add(new LatLng(-33.930366, 18.413767));
+
+        Polyline polyline = m_map.addPolyline(trianglePolyOptions);
     }
 }
