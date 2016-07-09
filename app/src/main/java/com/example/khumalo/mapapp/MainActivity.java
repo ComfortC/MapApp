@@ -1,5 +1,6 @@
 package com.example.khumalo.mapapp;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -31,11 +33,29 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
 
         LatLng Bertram_House  =  new LatLng(-33.930366, 18.413767);
-        Betram = new MarkerOptions().position(Bertram_House).title("Bertram House");
+        Betram = new MarkerOptions()
+                .position(Bertram_House)
+                .title("Bertram House")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag));
+
+
+
         LatLng District_Six_Museum  =  new LatLng(-33.927544, 18.423731);
-        District= new MarkerOptions().position(District_Six_Museum).title("District Six Museum");
+        District= new MarkerOptions()
+                .position(District_Six_Museum)
+                .title("District Six Museum")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag));
+
+
+
         LatLng South_African_Museum =  new LatLng(-33.928738, 18.414925);
-        South= new MarkerOptions().position(South_African_Museum).title("South African Museum");
+        South= new MarkerOptions()
+                .position(South_African_Museum)
+                .title("South African Museum")
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag));
+
+
+
         CityCenter = new CameraPosition.Builder()
                 .target(new LatLng(-33.928275878944675,18.423414580798408))
                 .bearing(0)
