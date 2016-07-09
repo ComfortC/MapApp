@@ -30,22 +30,22 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Map"
-                android:id="@+id/btnMap"
+                android:text="Cape Town"
+                android:id="@+id/cape"
                 android:layout_weight="1" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Satellite"
-                android:id="@+id/btnSatellite"
+                android:text="Seattle"
+                android:id="@+id/seattle"
                 android:layout_weight="1" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hybrid"
-                android:id="@+id/btnHybrid"
+                android:text="London"
+                android:id="@+id/london"
                 android:layout_weight="1" />
         </LinearLayout>
 

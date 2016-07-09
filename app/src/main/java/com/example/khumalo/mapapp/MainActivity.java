@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     GoogleMap m_map;
     boolean mapReady=false;
+
+    private static final LatLng Cape_Town = new LatLng(-33.9880185,18.4827403);
+    private static final LatLng London_Settings = new LatLng(51.528308,-0.3817765);
+    private static final LatLng Seattle_Settings = new LatLng(47.6129432,-122.4821475);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,30 +44,53 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        Button btnMap = (Button) findViewById(R.id.btnMap);
-        btnMap.setOnClickListener(new View.OnClickListener() {
+        Button CapeTown= (Button) findViewById(R.id.cape);
+        CapeTown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapReady)
-                    m_map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                if (mapReady) {
+                    CameraPosition capeTown = new CameraPosition.Builder()
+                            .target(Cape_Town)
+                            .zoom(13)
+                            .bearing(45)
+                            .build();
+                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(capeTown),5000,null);
+                }
             }
         });
 
-        Button btnSatellite = (Button) findViewById(R.id.btnSatellite);
-        btnSatellite.setOnClickListener(new View.OnClickListener() {
+        Button London = (Button) findViewById(R.id.london);
+        London.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapReady)
-                    m_map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                if(mapReady){
+
+                    CameraPosition LondonCity = new CameraPosition.Builder()
+                            .target(London_Settings)
+                            .zoom(13)
+                            .bearing(45)
+                            .build();
+                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(LondonCity),5000,null);
+
+                }
+
+
             }
         });
 
-        Button btnHybrid = (Button) findViewById(R.id.btnHybrid);
-        btnHybrid.setOnClickListener(new View.OnClickListener() {
+        Button Seattle = (Button) findViewById(R.id.seattle);
+        Seattle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mapReady)
-                    m_map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                if(mapReady){
+                    CameraPosition SeattleCity = new CameraPosition.Builder()
+                            .target(Seattle_Settings)
+                            .zoom(13)
+                            .bearing(45)
+                            .build();
+                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(SeattleCity),5000,null);
+                }
+
             }
         });
 
@@ -98,8 +125,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mapReady=true;
         m_map = googleMap;
-        LatLng newYork = new LatLng(-33.9880185,18.4827403);
-        CameraPosition target = CameraPosition.builder().target(newYork).zoom(14).build();
+        m_map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        LatLng Cape = new LatLng(-33.9880185,18.4827403);
+        CameraPosition target = CameraPosition.builder().target(Cape).zoom(14).build();
         m_map.moveCamera(CameraUpdateFactory.newCameraPosition(target));
     }
 }
