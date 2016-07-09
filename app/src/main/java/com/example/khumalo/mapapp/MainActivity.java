@@ -52,9 +52,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     CameraPosition capeTown = new CameraPosition.Builder()
                             .target(Cape_Town)
                             .zoom(13)
-                            .bearing(45)
+                            .bearing(0)
+                            .tilt(45)
                             .build();
-                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(capeTown),5000,null);
+                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(capeTown),10000,null);
                 }
             }
         });
@@ -67,10 +68,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     CameraPosition LondonCity = new CameraPosition.Builder()
                             .target(London_Settings)
-                            .zoom(13)
-                            .bearing(45)
+                            .zoom(15)
+                            .bearing(0)
+                            .tilt(45)
                             .build();
-                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(LondonCity),5000,null);
+                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(LondonCity),10000,null);
 
                 }
 
@@ -86,9 +88,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     CameraPosition SeattleCity = new CameraPosition.Builder()
                             .target(Seattle_Settings)
                             .zoom(13)
-                            .bearing(45)
+                            .bearing(0)
+                            .tilt(45)
                             .build();
-                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(SeattleCity),5000,null);
+                    m_map.animateCamera(CameraUpdateFactory.newCameraPosition(SeattleCity),10000,null);
                 }
 
             }
