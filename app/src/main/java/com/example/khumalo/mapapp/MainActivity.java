@@ -9,7 +9,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
+import com.google.android.gms.maps.StreetViewPanorama;
+import com.google.android.gms.maps.StreetViewPanoramaFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
+
+public class MainActivity extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+        StreetViewPanoramaFragment streetViewPanoramaFragment = (StreetViewPanoramaFragment)getFragmentManager()
+                        .findFragmentById(R.id.map);
+        streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
     }
 
     @Override
@@ -49,5 +58,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onStreetViewPanoramaReady(StreetViewPanorama panorama) {
+        panorama.setPosition(new LatLng(36.059667, -112.1430996));
+
+        StreetViewPanoramaCamera camera = new StreetViewPanoramaCamera.Builder()
+                .bearing(180)
+                .build();
+        panorama.animateTo(camera, 10000);
     }
 }
