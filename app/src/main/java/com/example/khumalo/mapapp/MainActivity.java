@@ -16,6 +16,8 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
         CityCenter = new CameraPosition.Builder()
-                .target(new LatLng(-33.928275878944675,18.423414580798408))
+                .target(new LatLng(-33.927544, 18.423731))
                 .bearing(0)
                 .tilt(45)
                 .zoom(15)
@@ -111,16 +113,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
            m_map = googleMap;
            m_map.animateCamera(CameraUpdateFactory.newCameraPosition(CityCenter), 20000, null);
-           m_map.addMarker(Betram);
+           CircleOptions  circle = new CircleOptions()
+                .center(new LatLng(-33.927544, 18.423731))
+                .radius(500);
+           Circle dsix = m_map.addCircle(circle);
            m_map.addMarker(District);
-           m_map.addMarker(South);
-
-        PolylineOptions trianglePolyOptions =  new PolylineOptions()
-                .add(new LatLng(-33.930366, 18.413767))
-                .add(new LatLng(-33.927544, 18.423731))
-                .add(new LatLng(-33.928738, 18.414925))
-                .add(new LatLng(-33.930366, 18.413767));
-
-        Polyline polyline = m_map.addPolyline(trianglePolyOptions);
     }
 }
