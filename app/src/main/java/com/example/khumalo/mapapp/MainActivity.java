@@ -1,6 +1,7 @@
 package com.example.khumalo.mapapp;
 
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -115,7 +116,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
            m_map.animateCamera(CameraUpdateFactory.newCameraPosition(CityCenter), 20000, null);
            CircleOptions  circle = new CircleOptions()
                 .center(new LatLng(-33.927544, 18.423731))
-                .radius(500);
+                .radius(500)
+                   .strokeColor(Color.GREEN)
+                   .fillColor(Color.argb(64,0,255,0));
            Circle dsix = m_map.addCircle(circle);
            m_map.addMarker(District);
     }
